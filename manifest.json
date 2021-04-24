@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Facebook likes",
+    "description": "sem o botão do addmefast",
+    "version": "0.1",
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.addmefast.com/*","*://*.facebook.com/*"
+            ],
+            "js": [
+                "jquery.js","content.js"
+            ]
+        }
+    ]
+}
