@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Facebook share",
-    "description": "sem o botão do addmefast",
+    "name": "2) FacebookShare",
+    "description": "",
     "version": "0.1",
     "content_scripts": [
         {

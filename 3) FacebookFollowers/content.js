@@ -1,7 +1,5 @@
 
-
-
-var contador = 1;
+//não foi possível atualizar o script pois havia acabado as trocas
 
        if(document.domain === 'facebook.com'){
 
@@ -31,12 +29,6 @@ var contador = 1;
 						if(typeof $(".single_like_button.btn3-wrap")[0] !== 'undefined'){
 								 $(".single_like_button.btn3-wrap")[0].click();
 
-								 contador+=0.5;
-								 console.log('Clicou '+contador)
-
-								 if(contador === 15) {
-									document.getElementsByClassName('menu_item_sub')[3].childNodes[3].click()
-								 }else {console.log('falhou no contador')}
 						}
 						execBtnTrigger();
 	
