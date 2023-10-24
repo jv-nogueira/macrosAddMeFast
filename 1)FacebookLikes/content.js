@@ -1,39 +1,46 @@
-var limiteContador = 2
+var limiteContador = 1
+var limiteContadorBtn = 10
 
 if(document.domain === 'facebook.com'){
 	console.log("passou pelo domain")
+
 // Verifique se o contador já está armazenado no localStorage
-let contador = localStorage.getItem('contador');
+var contadorLocal = localStorage.getItem('contador');
+
 // Se não houver um contador, inicie-o em 0
-if (contador === null) {
-	contador = 0;
+if (contadorLocal === null) {
+	contadorLocal = 0;
 } else {
-	contador = parseInt(contador); // Converte a string armazenada em um número
+	contadorLocal = parseInt(contadorLocal); // Converte a string armazenada em um número
 }
-// Função para aumentar o contador e atualizar o localStorage
-function aumentarContador() {
-	contador++;
-	localStorage.setItem('contador', contador);
-	console.log('Contador: ' + contador);
-}
-	if(contador <= limiteContador){
+console.log("Contador: "+contadorLocal)
+console.log("O limite é: "+limiteContador)
+setTimeout(() => {
+	if(contadorLocal < limiteContador){
 		console.log("passou pelo contador")
   setTimeout(() => {
-	if( $("[aria-label='Curtir']") != null ){
+	if( [...document.querySelectorAll('span')].find(el => el.textContent == "Seguir") == undefined ){
 		console.log("passou pelo curtir")
 		aumentarContador();
 	$("[aria-label='Curtir']").click()
-	}else{console.log("não passou pelo curtir")}
 	setTimeout(() => {
-           window.close();
-        },getRandomSec222(4)); 
+		window.close();
+	 },getRandomSec222(7)); 
+	}else if( $("[aria-label='Curtir']") == null ){
+		console.log("não passou pelo curtir entao passou a Seguir")
+		aumentarContador();
+		setTimeout(() => {
+		[...document.querySelectorAll('span')].find(el => el.textContent == "Seguir").click();
+	}, getRandomSec222(3));
+	setTimeout(() => {
+		window.close();
+	 },getRandomSec222(7)); 
+	}else{console.log("não passou pelo curtir e nem seguir")} 
   }, getRandomSec222(3));
 }else{
-	console.log("oChegou ao limite")
-		setTimeout(() => {
-           window.close();
-        },getRandomSec222(7)); 
-}	
+	console.log("Chegou ao limite: "+contadorLocal)
+}
+},getRandomSec222(2));	
 	   }else if(document.location.href == "https://addmefast.com/free_points/facebook_likes"){
 		console.log("não passou pelo domain ou passou pelo link (location.href)")
 		execBtnTrigger();
@@ -47,7 +54,7 @@ return sec222;
 }
 
 // Variável para manter o contador
-let contadorBtn = 0;
+var contadorBtn = 0;
 // Função para executar o clique no botão e contar
 function execBtnTrigger() {
   setTimeout(function () {
@@ -60,8 +67,8 @@ function execBtnTrigger() {
       console.log("Não clicou no botão de LikesFollowers");
     }
     // Verifica se o contador atingiu o limite
-    if (contadorBtn >= limiteContador) {
-		console.log("Chegou ao limite");
+    if (contadorBtn >= limiteContadorBtn) {
+		console.log("Chegou ao limite: "+limiteContadorBtn);
 	setTimeout(() => {
 		$("[href='/free_points/facebook_share']")[0].click()
 	}, getRandomSec222(10));
@@ -69,4 +76,11 @@ function execBtnTrigger() {
       execBtnTrigger();
     }
   }, getRandomSec222(20));
+}
+
+// Função para aumentar o contador e atualizar o localStorage
+function aumentarContador() {
+	contadorLocal += 1;
+	localStorage.setItem('contador', contadorLocal);
+	console.log('Contador: ' + contadorLocal);
 }

@@ -1,8 +1,11 @@
 {
     "manifest_version": 2,
-    "name": "1) FB-PageLikes-Followers",
+    "name": "1)FacebookLikes",
     "description": "",
     "version": "0.1",
+    "icons": { 
+        "48": "icons/icons8-facebook-48.png"
+},
     "content_scripts": [
         {
             "matches": [
