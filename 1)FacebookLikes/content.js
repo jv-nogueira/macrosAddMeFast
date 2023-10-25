@@ -20,22 +20,25 @@ setTimeout(() => {
 		console.log("passou pelo contador")
   setTimeout(() => {
 	if( [...document.querySelectorAll('span')].find(el => el.textContent == "Seguir") == undefined ){
-		console.log("passou pelo curtir")
+		console.log("passou a Curtir")
 		aumentarContador();
 	$("[aria-label='Curtir']").click()
 	setTimeout(() => {
 		window.close();
 	 },getRandomSec222(7)); 
-	}else if( $("[aria-label='Curtir']") == null ){
-		console.log("não passou pelo curtir entao passou a Seguir")
+	}else(console.log('não passou pelo curtir'))
+	
+	if( [...document.querySelectorAll('span')].find(el => el.textContent != "Seguir" ) ){
+		console.log("passou a Seguir")
 		aumentarContador();
 		setTimeout(() => {
 		[...document.querySelectorAll('span')].find(el => el.textContent == "Seguir").click();
+		$("[aria-label='Seguir']").click()
 	}, getRandomSec222(3));
 	setTimeout(() => {
 		window.close();
 	 },getRandomSec222(7)); 
-	}else{console.log("não passou pelo curtir e nem seguir")} 
+	}else{console.log("não passou pelo seguir")} 
   }, getRandomSec222(3));
 }else{
 	console.log("Chegou ao limite: "+contadorLocal)
